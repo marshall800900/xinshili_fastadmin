@@ -1,0 +1,42 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <input id="c-receiving_account_code" data-rule="required" class="form-control" name="row[receiving_account_code]" type="hidden" value="{$receiving_account_code}">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Receiving_account_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-receiving_account_id" data-rule="required" data-source="mashangchannel/receivingaccount/index?receiving_account_code={$receiving_account_code}" data-field="charge_account_name"  data-primary-key="id" class="form-control selectpage" name="row[receiving_account_id]" type="text" value="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('可用余额')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-balance" disabled class="form-control" name="row[balance]" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('收款人')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-user_no" placeholder="请输入手机号、昵称、企业账户邮箱" data-rule="required" class="form-control" name="row[user_no]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('转账金额')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-amount" data-rule="required" class="form-control" step="0.01" name="row[amount]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" name="row[remark]" type="text">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

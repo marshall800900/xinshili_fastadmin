@@ -1,0 +1,63 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Charge_account')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_account" disabled data-rule="required" class="form-control" name="row[charge_account]" type="text" value="{$row.charge_account|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Charge_account_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_account_name" disabled data-rule="required" class="form-control" name="row[charge_account_name]" type="text" value="{$row.charge_account_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cookie')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control" id="extend" name="row[cookie]">{$row.cookie|htmlentities}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">地区:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="form-inline" data-toggle="cxselect" data-url="__CDN__/assets/libs/fastadmin-cxselect/js/cityData.min.json?t=2"
+                 data-selects="province,city,area" data-json-space="" data-json-name="n" data-json-value="">
+                <select class="province form-control" name="row[area][province]">
+                    <option value="">请选择</option>
+                    <option value="{$row.area.province|htmlentities}" selected>{$row.area.province|htmlentities}</option>
+                </select>
+                <select class="city form-control" name="row[area][city]">
+                    <option value="">请选择</option>
+                    <option value="{$row.area.city|htmlentities}" selected>{$row.area.city|htmlentities}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" name="row[remark]" type="text" value="{$row.remark|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_open')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-is_open" data-rule="required" class="form-control selectpicker" name="row[is_open]">
+                {foreach name="isOpenList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.is_open"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

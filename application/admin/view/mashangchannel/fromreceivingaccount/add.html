@@ -1,0 +1,225 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Receiving_account_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-receiving_account_code" data-rule="required" class="form-control" name="row[receiving_account_code]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-order_number" class="form-control" name="row[order_number]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cookie_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cookie_id" data-rule="required" data-source="cookie/index" class="form-control selectpage" name="row[cookie_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Proxy_ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-proxy_ip" class="form-control" name="row[proxy_ip]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Proxy_ip_invalid_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-proxy_ip_invalid_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[proxy_ip_invalid_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Charge_account')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_account" data-rule="required" class="form-control" name="row[charge_account]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Charge_account_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_account_name" data-rule="required" class="form-control" name="row[charge_account_name]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Balance')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-balance" data-rule="required" class="form-control" step="0.01" name="row[balance]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Shop_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-shop_amount" data-rule="required" class="form-control" step="0.01" name="row[shop_amount]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Charge_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_amount" data-rule="required" class="form-control" step="0.01" name="row[charge_amount]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Charge_amount_ing')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_amount_ing" data-rule="required" class="form-control" step="0.01" name="row[charge_amount_ing]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Real_charge_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-real_charge_amount" data-rule="required" class="form-control" step="0.01" name="row[real_charge_amount]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cookie')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-cookie" class="form-control " rows="5" name="row[cookie]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Area')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-area" class="form-control" name="row[area]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Public_key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-public_key" class="form-control" name="row[public_key]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Private_key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-private_key" class="form-control" name="row[private_key]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Notify_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-notify_url" class="form-control" name="row[notify_url]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Notify_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="notifyStatusList" item="vo"}
+            <label for="row[notify_status]-{$key}"><input id="row[notify_status]-{$key}" name="row[notify_status]" type="radio" value="{$key}" {in name="key" value="0"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Notify_numb')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-notify_numb" data-rule="required" class="form-control" name="row[notify_numb]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" name="row[remark]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Extra_params')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-extra_params" class="form-control " rows="5" name="row[extra_params]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_fail_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_fail_num" data-rule="required" class="form-control" name="row[create_fail_num]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_fail_msg')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_fail_msg" class="form-control" name="row[create_fail_msg]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('System_open')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-system_open" data-rule="required" class="form-control selectpicker" name="row[system_open]">
+                {foreach name="systemOpenList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_open')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_open" data-rule="required" class="form-control selectpicker" name="row[is_open]">
+                {foreach name="isOpenList" item="vo"}
+                    <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="0"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Expired_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-expired_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[expired_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Update_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-update_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[update_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Delete_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-delete_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[delete_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_del')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_del" data-rule="required" class="form-control selectpicker" name="row[is_del]">
+                {foreach name="isDelList" item="vo"}
+                    <option value="{$key}" {in name="key" value="0"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

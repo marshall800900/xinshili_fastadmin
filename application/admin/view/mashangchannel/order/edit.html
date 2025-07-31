@@ -1,0 +1,207 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-type" data-rule="required" class="form-control selectpicker" name="row[type]">
+                {foreach name="typeList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.type"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Api_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-api_code" data-rule="required" class="form-control" name="row[api_code]" type="text" value="{$row.api_code|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_channel_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pay_channel_id" data-rule="required" data-source="pay/channel/index" class="form-control selectpage" name="row[pay_channel_id]" type="text" value="{$row.pay_channel_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cookie_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cookie_id" data-rule="required" data-source="cookie/index" class="form-control selectpage" name="row[cookie_id]" type="text" value="{$row.cookie_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Receiving_account_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-receiving_account_code" data-rule="required" class="form-control" name="row[receiving_account_code]" type="text" value="{$row.receiving_account_code|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Receiving_account_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-receiving_account_id" data-rule="required" data-source="receiving/account/index" class="form-control selectpage" name="row[receiving_account_id]" type="text" value="{$row.receiving_account_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-amount" data-rule="required" class="form-control" step="0.01" name="row[amount]" type="number" value="{$row.amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Real_pay_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-real_pay_amount" data-rule="required" class="form-control" step="0.01" name="row[real_pay_amount]" type="number" value="{$row.real_pay_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-order_number" class="form-control" name="row[order_number]" type="text" value="{$row.order_number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_channel_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pay_channel_number" class="form-control" name="row[pay_channel_number]" type="text" value="{$row.pay_channel_number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Refund_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-refund_number" class="form-control" name="row[refund_number]" type="text" value="{$row.refund_number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-pay_url" class="form-control " rows="5" name="row[pay_url]" cols="50">{$row.pay_url|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rate" data-rule="required" class="form-control" step="0.01" name="row[rate]" type="number" value="{$row.rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rate_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rate_amount" data-rule="required" class="form-control" step="0.01" name="row[rate_amount]" type="number" value="{$row.rate_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Extra_params')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-extra_params" class="form-control" name="row[extra_params]" type="text" value="{$row.extra_params|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="$row.status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{:$row.create_time?datetime($row.create_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order_expired_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-order_expired_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[order_expired_time]" type="text" value="{:$row.order_expired_time?datetime($row.order_expired_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Expired_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-expired_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[expired_time]" type="text" value="{:$row.expired_time?datetime($row.expired_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_fail_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_fail_number" data-rule="required" class="form-control" name="row[create_fail_number]" type="number" value="{$row.create_fail_number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_fail_msg')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_fail_msg" class="form-control" name="row[create_fail_msg]" type="text" value="{$row.create_fail_msg|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_report_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="createReportStatusList" item="vo"}
+            <label for="row[create_report_status]-{$key}"><input id="row[create_report_status]-{$key}" name="row[create_report_status]" type="radio" value="{$key}" {in name="key" value="$row.create_report_status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Success_report_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="successReportStatusList" item="vo"}
+            <label for="row[success_report_status]-{$key}"><input id="row[success_report_status]-{$key}" name="row[success_report_status]" type="radio" value="{$key}" {in name="key" value="$row.success_report_status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Refund_report_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="refundReportStatusList" item="vo"}
+            <label for="row[refund_report_status]-{$key}"><input id="row[refund_report_status]-{$key}" name="row[refund_report_status]" type="radio" value="{$key}" {in name="key" value="$row.refund_report_status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Receiving_account_create_report')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-receiving_account_create_report" data-rule="required" class="form-control selectpicker" name="row[receiving_account_create_report]">
+                {foreach name="receivingAccountCreateReportList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.receiving_account_create_report"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Receiving_account_success_report')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-receiving_account_success_report" data-rule="required" class="form-control selectpicker" name="row[receiving_account_success_report]">
+                {foreach name="receivingAccountSuccessReportList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.receiving_account_success_report"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

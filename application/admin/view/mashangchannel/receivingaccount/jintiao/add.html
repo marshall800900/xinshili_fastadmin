@@ -1,0 +1,44 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('扫码授权')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input  class="form-control qr_code_url" name="qr_code_url" value="{$qr_code_url}" type="hidden">
+            <div class="qrcode" style="margin-left: 30px"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('扫码获取支付宝UID')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <img src="/uploads/img/uid.png">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Charge_account')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_account" data-rule="required" class="form-control" placeholder="输入支付宝UID" name="row[charge_account]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Charge_account_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_account_name" data-rule="required" placeholder="随便输入，方便分辨账号" class="form-control" name="row[charge_account_name]" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" name="row[remark]" type="text">
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

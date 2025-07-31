@@ -1,0 +1,32 @@
+<form id="add-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+    {:token()}
+    <div class="form-group">
+        <label for="balance" class="control-label col-xs-12 col-sm-2">变更金额:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="text" class="form-control" id="balance" placeholder="正数添加负数扣除" name="row[balance]" value="" data-rule="required" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="memo" class="control-label col-xs-12 col-sm-2">备注:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="text" class="form-control" id="memo" placeholder="变更备注，可以不填写" name="row[memo]" autocomplete="off" value="" data-rule="" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="google_auth_code" class="control-label col-xs-12 col-sm-2">谷歌验证码:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="text" class="form-control" id="google_auth_code" name="row[google_auth_code]" value="" data-rule="required;" />
+        </div>
+    </div>
+
+    <div class="form-group hidden layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

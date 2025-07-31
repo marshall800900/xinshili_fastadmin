@@ -1,0 +1,200 @@
+<style>
+    .params li span{
+        width: 20%;
+        display: inline-block;
+        text-align: left;
+    }
+</style>
+
+
+<style>
+    .profile-avatar-container {
+        position: relative;
+        width: 100px;
+        margin: 0 auto;
+    }
+
+    .profile-avatar-container .profile-user-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-avatar-container .profile-avatar-text {
+        display: none;
+    }
+
+    .profile-avatar-container:hover .profile-avatar-text {
+        display: block;
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        background: #444;
+        opacity: .6;
+        color: #fff;
+        top: 0;
+        left: 0;
+        line-height: 100px;
+        text-align: center;
+    }
+
+    .profile-avatar-container button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+</style>
+<div class="row animated fadeInRight">
+    <div class="col-md-4">
+        <div class="box box-primary">
+            <div class="panel-body">
+                <ul class="list-group params">
+                    <li class="list-group-item">
+                        <span>产品编号</span><span>费率</span>
+                    </li>
+                    {foreach name="product_list" item="vo"}
+                    <li class="list-group-item">
+                        <span>{$vo.product_code}</span>
+                        <span>{$vo.rate}</span>
+                    </li>
+                    {/foreach}
+
+                </ul>
+
+                <form id="add-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+                <div class="form-group">
+                    <label for="md5_key" class="control-label col-xs-12 col-sm-2">商户ID:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input type="text" class="form-control" id="merchant_id" name="row[merchant_id]"value="{$merchant_id|htmlentities}" disabled/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="md5_key" class="control-label col-xs-12 col-sm-2">接口密钥:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input type="text" class="form-control" id="md5_key" name="row[md5_key]"value="{$md5_key|htmlentities}" disabled/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="api_url" class="control-label col-xs-12 col-sm-2">接口地址:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input type="text" class="form-control" id="api_url" name="row[api_url]"value="{$api_url|htmlentities}" disabled/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="notify_ip" class="control-label col-xs-12 col-sm-2">回调IP:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input type="text" class="form-control" id="notify_ip" name="row[notify_ip]"value="{$api_url|htmlentities}" disabled/>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-default panel-intro panel-nav">
+            <div class="layui-bg-gray" style="padding: 30px; background-color: #f1f4f6;">
+                <h3>接口说明</h3>
+                <div>
+                    <p style="padding-left: 10px;">
+                        传参支持json或者表单，必须post请求，异步通知数据格式为json
+                    </p>
+                </div>
+                <h3>签名算法</h3>
+                <div>
+                    <p style="padding-left: 10px;">
+                        1、将字段按照Ascii码方式进行升序排序</br>
+                        2、按照key1=val1&key2=val2&key3=val3....&key=商户KEY</br>
+                        3、将上一步生成的字符串进行MD5加密，并转换成大写
+                    </p>
+                </div>
+
+                <h3>下单</h3>
+                <div>
+                    <p style="padding-left: 10px;">接口地址：{$api_url}/merchant/index/create</p>
+                </div>
+                <ul class="list-group params">
+                    <li class="list-group-item">
+                        <span>参数</span><span>是否参与签名</span><span>可否为空</span><span>注释</span>
+                    </li>
+                    <li class="list-group-item"><span>request_time</span><span>是</span><span>否</span><span>发起请求时间，13位时间戳，单位豪秒</span></li>
+                    <li class="list-group-item"><span>product_code</span><span>是</span><span>否</span><span>产品编号</span></li>
+                    <li class="list-group-item"><span>amount</span><span>是</span><span>否</span><span>订单金额，单位元</span></li>
+                    <li class="list-group-item"><span>merchant_order_number</span><span>是</span><span>否</span><span>商户订单号</span></li>
+                    <li class="list-group-item"><span>merchant_id</span><span>是</span><span>否</span><span>商户ID</span></li>
+                    <li class="list-group-item"><span>notify_url</span><span>是</span><span>否</span><span>回调地址</span></li>
+                    <li class="list-group-item"><span>extra_params</span><span>是</span><span>是</span><span>扩展参数回调原样返回，空不参与签名</span></li>
+                    <li class="list-group-item"><span>sign</span><span>是</span><span>否</span><span>签名</span></li>
+                </ul>
+
+                <div>
+                    <p><b>返回参数示例：</b></p>
+                    <p style="padding-left: 10px;">{"code":0,"msg":"success","data":{"pay_url":"支付链接","order_number":"XSL1320250331084251871283"}}</p>
+                </div>
+
+                <ul class="list-group params" style="margin-bottom: 50px;">
+                    <li class="list-group-item">
+                        <span>参数</span><span>注释</span>
+                    </li>
+                    <li class="list-group-item"><span>code</span><span>0成功，其他失败</span></li>
+                    <li class="list-group-item"><span>msg</span><span>人类可读信息</span></li>
+                    <li class="list-group-item"><span>pay_url</span><span>支付链接</span></li>
+                    <li class="list-group-item"><span>order_number</span><span>我司订单号</span></li>
+                </ul>
+
+                <h3>查单</h3>
+                <div>
+                    <p style="padding-left: 10px;">接口地址：{$api_url}/merchant/index/query</p>
+                </div>
+                <ul class="list-group params">
+                    <li class="list-group-item">
+                        <span>参数</span><span>是否参与签名</span><span>可否为空</span><span>注释</span>
+                    </li>
+                    <li class="list-group-item"><span>request_time</span><span>是</span><span>否</span><span>发起请求时间，13位时间戳，单位豪秒</span></li>
+                    <li class="list-group-item"><span>merchant_order_number</span><span>是</span><span>否</span><span>商户订单号</span></li>
+                    <li class="list-group-item"><span>merchant_id</span><span>是</span><span>否</span><span>商户ID</span></li>
+                    <li class="list-group-item"><span>sign</span><span>是</span><span>否</span><span>签名</span></li>
+                </ul>
+
+                <div>
+                    <p><b>返回参数示例：</b></p>
+                    <p style="padding-left: 10px;">{"code":0,"msg":"success","data":{"status":1}}</p>
+                </div>
+
+                <ul class="list-group params" style="margin-bottom: 50px;">
+                    <li class="list-group-item">
+                        <span>参数</span><span>注释</span>
+                    </li>
+                    <li class="list-group-item"><span>code</span><span>0成功，其他失败</span></li>
+                    <li class="list-group-item"><span>msg</span><span>人类可读信息</span></li>
+                    <li class="list-group-item"><span>status</span><span>此参数code为0时返回，0:支付中;1:支付成功;2:支付失败;</span></li>
+                </ul>
+
+                <h3>异步通知</h3>
+                <div>
+                    <p style="padding-left: 10px;">
+                        收到通知并处理完成之后返回小写的success，否则系统会间隔30秒再次发起通知
+                    </p>
+                    <p style="padding-left: 10px;">回调IP：{$api_url}</p>
+                </div>
+                <ul class="list-group params">
+                    <li class="list-group-item">
+                        <span>参数</span><span>是否参与签名</span><span>可否为空</span><span>注释</span>
+                    </li>
+                    <li class="list-group-item"><span>request_time</span><span>是</span><span>否</span><span>发起请求时间，13位时间戳，单位豪秒</span></li>
+                    <li class="list-group-item"><span>merchant_order_number</span><span>是</span><span>否</span><span>商户订单号</span></li>
+                    <li class="list-group-item"><span>merchant_id</span><span>是</span><span>否</span><span>商户ID</span></li>
+                    <li class="list-group-item"><span>extra_params</span><span>是</span><span>否</span><span>扩展参数回调原样返回，空不参与签名</span></li>
+                    <li class="list-group-item"><span>amount</span><span>是</span><span>否</span><span>订单金额</span></li>
+                    <li class="list-group-item"><span>status</span><span>是</span><span>否</span><span>支付状态，0:支付中;1:支付成功;2:支付失败;</span></li>
+                    <li class="list-group-item"><span>sign</span><span>是</span><span>否</span><span>签名</span></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+

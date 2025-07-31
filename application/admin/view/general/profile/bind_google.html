@@ -1,0 +1,27 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    {:token()}
+    <div class="alert alert-dark" role="alert">
+        1：使用谷歌验证器扫码下方二维码<br/>
+        2：扫描二维码后谷歌验证器会出现六位验证码，将六位验证码填写至下方输入框点击提交即可绑定成功
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input  class="form-control qr_code_url" name="row[qr_code_url]" value="{$qr_code_url}" type="hidden">
+            <input  class="form-control" name="row[google_secret]" value="{$google_secret}" type="hidden">
+            <div class="qrcode"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('GoogleAuthCode')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[google_auth_code]" type="number">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

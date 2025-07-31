@@ -1,0 +1,45 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('商户ID')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_account" class="form-control" name="row[charge_account]" data-rule="required" type="text" value="{$row.charge_account|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('商户名字')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge_account_name" class="form-control" name="row[charge_account_name]" data-rule="required" type="text" value="{$row.charge_account_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('产品编号')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-extra_params" class="form-control" name="row[extra_params]" data-rule="required" type="text" value="{$row.extra_params|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('回调地址')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-notify_url" class="form-control" name="row[notify_url]" data-rule="required" type="text" value="{$row.notify_url|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('代理IP')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-proxy_ip" class="form-control" name="row[proxy_ip]" data-rule="required" type="text" value="{$row.proxy_ip|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('商户私钥')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control" id="private_key" data-rule="required" name="row[private_key]">{$row.private_key|htmlentities}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>
