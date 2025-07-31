@@ -444,6 +444,9 @@ class ReceivingAccountHelper
                     'cookie' => json_encode($cookie, JSON_UNESCAPED_UNICODE)
                 ];
             }
+
+            $charge_account_info['is_open'] = '1';
+            $charge_account_info['create_fail_msg'] = '';
         }catch (\Exception $e){
             throw new ValidateException($e->getMessage());
         }
