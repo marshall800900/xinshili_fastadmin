@@ -232,7 +232,7 @@ class Receivingaccount extends Backend
             if (file_exists($this->html_path . $row['receiving_account_code'] . DS . 'edit.html'))
                 $feth_path = 'mashangchannel' . DS . 'receivingaccount' . DS . $row['receiving_account_code'] . DS . 'edit';
 
-            if ($row['receiving_account_code'] == 'fxsh'){
+            if ($row['receiving_account_code'] == 'fxsh') {
                 $row['cookie'] = json_decode($row['cookie'], true);
             }
 
@@ -382,8 +382,9 @@ class Receivingaccount extends Backend
         return $this->model->$model_name();
     }
 
-    public function sendSmsCode(){
-        try{
+    public function sendSmsCode()
+    {
+        try {
             $params = input();
             if (!isset($params['receiving_account_code']) || !$params['receiving_account_code'])
                 throw new \Exception('参数错误');
@@ -393,10 +394,31 @@ class Receivingaccount extends Backend
 
             if (method_exists($check_class, $method_name))
                 $params = $check_class::$method_name($params);
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             $this->error($e->getMessage());
         }
         $this->success('success', null, $params);
+    }
+
+    public function queryInfo($ids = null)
+    {
+        try {
+            $info = db()->name('receiving_account')
+                ->field('id, receiving_account_code, charge_account, cookie, proxy_ip, proxy_ip_invalid_time, id,area, extra_params')
+                ->where('id', $ids)
+                ->find();
+            if (!$info)
+                throw new \Exception('参数错误');
+
+            $check_class = new ReceivingAccountHelper();
+            $method_name = $info['receiving_account_code'] . 'QueryInfo';
+
+            if (method_exists($check_class, $method_name))
+                $result = $check_class::$method_name($info);
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+        }
+        $this->success($result);
     }
 
     public function login()

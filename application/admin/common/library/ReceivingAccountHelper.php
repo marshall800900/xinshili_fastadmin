@@ -499,6 +499,55 @@ class ReceivingAccountHelper
         return ['balance' => $result_array['data']['dataJson']['availableAmount']];
     }
 
+    public static function fxshQueryInfo($params){
+        try{
+            $api_url = db()->name('pay_api')
+                ->where('api_code', $params['receiving_account_code'])
+                ->value('api_url');
+
+            $info = db()->name('receiving_account')
+                ->field('id, receiving_account_code, cookie, proxy_ip, proxy_ip_invalid_time, id,area, extra_params')
+                ->where('receiving_account_code', $params['receiving_account_code'])
+                ->where('is_open', '1')
+                ->where('id', '<>', $params['id'])
+                ->find();
+            if (!$info)
+                throw new \Exception('查询异常');
+            $info['proxy_ip'] = json_decode($info['proxy_ip'], true);
+            $info['cookie'] = json_decode($info['cookie'], true);
+
+
+            $request_url = $api_url . 'queryUser';
+            $request_data = [
+                'ck' => $info['cookie']['ck'],
+                'deviceNo' => $info['cookie']['deviceNo'],
+                'ip' => $info['proxy_ip']['proxy_ip'],
+                'proxyUser' => $info['proxy_ip']['proxy_auth'][0],
+                'proxyPass' => $info['proxy_ip']['proxy_auth'][1],
+                'keyword' => $params['charge_account']
+            ];
+
+            $result_json = CommonHelper::curlRequest($request_url, json_encode($request_data, JSON_UNESCAPED_UNICODE), ['Content-Type:application/json']);
+            $result_array = json_decode($result_json, true);
+            LogHelper::write([$request_url, $request_data, $result_json, $result_array]);
+
+            if (!isset($result_array['code']) || $result_array['code'] != 200 || !isset($result_array['data']['dataJson']))
+                throw new \Exception($result_array['errmsg'] ?? '登录失败');
+
+            $params['cookie'] = json_decode($params['cookie'], true);
+            $params['cookie']['user_info'] = $result_array['data']['dataJson']['userList'][0];
+            db()->name('receiving_account')
+                ->where('id', $params['id'])
+                ->update([
+                    'charge_account_name' => $result_array['data']['dataJson']['userList'][0]['userNo'],
+                    'cookie' => json_encode($params['cookie'], JSON_UNESCAPED_UNICODE)
+                ]);
+        }catch (\Exception $e){
+            throw new \Exception($e->getMessage());
+        }
+        return true;
+    }
+
     public static function fxshTransfer($params, $extra_params){
         try {
             $params['proxy_ip'] = json_decode($params['proxy_ip'], true);

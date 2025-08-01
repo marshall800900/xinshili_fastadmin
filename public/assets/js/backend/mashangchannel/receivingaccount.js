@@ -132,6 +132,20 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                                     },
                                     refresh: true
                                 },
+                                {
+                                    name: 'query_username',
+                                    text: '详情获取',
+                                    classname: 'btn btn-info btn-xs btn-detail btn-ajax',
+                                    url: 'mashangchannel/Receivingaccount/queryInfo',
+                                    hidden:function (row) {
+                                      if (row.receiving_account_code == 'fxsh'){
+                                          return false;
+                                      }
+
+                                      return true;
+                                    },
+                                    refresh: true
+                                },
                             ]
                         }
                     ]
