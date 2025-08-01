@@ -431,33 +431,15 @@ class ReceivingAccountHelper
                 if (!isset($result_array['code']) || $result_array['code'] != 200 || !isset($result_array['data']['dataJson']))
                     throw new \Exception($result_array['errmsg'] ?? '登录失败');
 
-
-                //获取用户名
-                $user_request_prams = [
-                    'ck' => $result_array['data']['ck'],
-                    'deviceNo' => $params['extra_params'],
-                    'ip' => $params['proxy_ip']['proxy_ip'],
-                    'proxyUser' => $params['proxy_ip']['proxy_auth'][0],
-                    'proxyPass' => $params['proxy_ip']['proxy_auth'][1],
-                    'keyword' => $params['charge_account']
-                ];
-
-                $user_result_json = CommonHelper::curlRequest($api_url.'queryUser', json_encode($user_request_prams, JSON_UNESCAPED_UNICODE), ['Content-Type:application/json']);
-                $user_result_array = json_decode($user_result_json, true);
-                LogHelper::write([$user_request_prams, $user_result_json, $user_result_array], '', 'queryUser');
-                if (!isset($user_result_array['code']) || $user_result_array['code'] != 200 || !isset($user_result_array['data']['dataJson']))
-                    throw new \Exception($user_result_array['errmsg'] ?? '查询用户名失败，请点击重新提交');
-
                 $cookie = $result_array['data']['dataJson'];
                 $cookie['ck'] =$result_array['data']['ck'];
                 $cookie['deviceNo'] =$params['extra_params'];
                 $cookie['pay_password'] = $params['pay_password'];
-                $cookie['userName'] = $result_array['data']['dataJson']['userList'][0]['userName'];
                 $charge_account_info = [
                     'receiving_account_code' => $params['receiving_account_code'],
                     'charge_account' => $params['charge_account'],
                     'proxy_ip' => json_encode($params['proxy_ip'], JSON_UNESCAPED_UNICODE),
-                    'charge_account_name' => $result_array['data']['dataJson']['userList'][0]['userNo'],
+                    'charge_account_name' => $params['charge_account'],
                     'charge_amount' => 88888888,
                     'cookie' => json_encode($cookie, JSON_UNESCAPED_UNICODE)
                 ];
