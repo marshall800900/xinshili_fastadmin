@@ -509,6 +509,7 @@ class ReceivingAccountHelper
                 ->field('id, receiving_account_code, cookie, proxy_ip, proxy_ip_invalid_time, id,area, extra_params')
                 ->where('receiving_account_code', $params['receiving_account_code'])
                 ->where('is_open', '1')
+                ->where('is_del', '0')
                 ->where('id', '<>', $params['id'])
                 ->find();
             if (!$info)
